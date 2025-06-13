@@ -1,8 +1,9 @@
 """
-Author: Akingbayi Ojo
+Author: Sandra Ocheche
 Purpose: To create a data analysis program of life expectancy
 Creativity: The user can search by country, year, or both
 """
+
 
 def process_year_search(file, input_year):
     # Initialize variables for the specified year
@@ -59,17 +60,28 @@ def process_year_search(file, input_year):
         average_life = None
 
     # Output overall statistics
-    print(f"\nThe overall max life expectancy is: {overall_max_life:.2f} from {overall_max_country} in {overall_max_year}")
-    print(f"The overall min life expectancy is: {overall_min_life:.2f} from {overall_min_country} in {overall_min_year}")
+    print(
+        f"\nThe overall max life expectancy is: {overall_max_life:.2f} from {overall_max_country} in {overall_max_year}"
+    )
+    print(
+        f"The overall min life expectancy is: {overall_min_life:.2f} from {overall_min_country} in {overall_min_year}"
+    )
 
     # Output statistics for the input year
     if average_life:
         print(f"\nFor the year {input_year}:")
-        print(f"The average life expectancy across all countries was {average_life:.2f}")
-        print(f"The max life expectancy was in {input_max_country} with {input_max_life:.2f}")
-        print(f"The min life expectancy was in {input_min_country} with {input_min_life:.2f}")
+        print(
+            f"The average life expectancy across all countries was {average_life:.2f}"
+        )
+        print(
+            f"The max life expectancy was in {input_max_country} with {input_max_life:.2f}"
+        )
+        print(
+            f"The min life expectancy was in {input_min_country} with {input_min_life:.2f}"
+        )
     else:
         print(f"\nNo data found for the year {input_year}.")
+
 
 def process_country_search(file, input_country):
     country_data = []
@@ -94,27 +106,34 @@ def process_country_search(file, input_country):
     else:
         print(f"\nNo data found for the country: {input_country}")
 
+
 def main():
     file_path = "Python/Assignments/life-expectancy.csv"
 
     try:
         with open(file_path) as file:
             # Ask the user for search type: year or country
-            search_type = input("Do you want to search by 'year', 'country', or 'both'? ").strip().lower()
+            search_type = (
+                input("Do you want to search by 'year', 'country', or 'both'? ")
+                .strip()
+                .lower()
+            )
 
-            if search_type == 'year':
+            if search_type == "year":
                 try:
                     input_year = int(input("Enter a year of interest: "))
                     process_year_search(file, input_year)
                 except ValueError:
                     print("Invalid input. Please enter a valid numeric year.")
-            elif search_type == 'country':
+            elif search_type == "country":
                 input_country = input("Enter the country of interest: ").strip().title()
                 process_country_search(file, input_country)
-            elif search_type == 'both':
+            elif search_type == "both":
                 try:
                     input_year = int(input("Enter a year of interest: "))
-                    input_country = input("Enter the country of interest: ").strip().title()
+                    input_country = (
+                        input("Enter the country of interest: ").strip().title()
+                    )
 
                     with open(file_path) as file:  # Re-open file for both searches
                         process_year_search(file, input_year)
@@ -129,6 +148,7 @@ def main():
     except FileNotFoundError:
         print(f"Error: The file '{file_path}' was not found.")
         exit()
+
 
 if __name__ == "__main__":
     main()

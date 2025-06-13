@@ -1,6 +1,5 @@
 """
 Author: Akingbayi Ojo
-
 Purpose: To calculate the price of a meal
 Creativity: The user if they want to tip. If they select yes, the amount they would like to tip.
             The amount is then added to the total. If they select no, they continue to the total.
@@ -28,7 +27,7 @@ total = sub_total + sales_tax
 tip = input("\n Would you like to tip? (yes/no) ")
 
 # If the user wants to tip, ask them how much and add it to the total
-if (tip.lower() == "yes"):
+if tip.lower() == "yes":
     tip_amount = float(input("How much would you like to tip? $"))
     total += tip_amount
     print(f"Total: ${total:.2f}")
